@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ejercicios-csi2022": {
+      "hosting": {
+        "ProyectoFinalIncidencias": [
+          "ejercicios-csi2022"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ejercicios-csi2022"
+  }
+}
