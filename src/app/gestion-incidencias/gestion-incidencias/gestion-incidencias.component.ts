@@ -8,12 +8,11 @@ import { IncidenciasServicioService } from '../../Servicio/incidencias-servicio.
 })
 export class GestionIncidenciasComponent implements OnInit {
   constructor(private incidenciasServicio: IncidenciasServicioService) { }
-  //Requisitos para llamar a la coleccion y pasar los datos a la vista
+  
   conexion = 'Incidencias';
   listadoIncidencias: any[] = [];
-  documentId: string = '';
 
-  getTodosLosClientes() {
+  getAll() {
     this.incidenciasServicio.getAll(this.conexion).subscribe(
       (resp: any) => {
         this.listadoIncidencias = [];
@@ -28,10 +27,8 @@ export class GestionIncidenciasComponent implements OnInit {
       })
   }
 
-
-
   ngOnInit() {
-    this.getTodosLosClientes();
+    this.getAll();
   }
 
 }
