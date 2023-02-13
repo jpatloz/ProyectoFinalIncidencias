@@ -1,1 +1,53 @@
-<p>gestion-incidencias works!</p>
+<!-- Esta clase nos mostrará los detalles de cada portero, poniendo una lista hecha con clases
+  de bootstrap-->
+  <div>
+    <h4 class="text-center">Gestión de incidencias</h4>
+  <table *ngFor="let incidencias of listadoIncidencias" class="table table-secondary table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">Fecha</th>
+        <th scope="col">Lugar</th>
+        <th scope="col">Solucion</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Revisada</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ incidencias.id }}</td>
+        <td>{{ incidencias.descIncidencia }}</td>
+        <td>{{ incidencias.fecha }}</td>
+        <td>{{ incidencias.lugarIncidencia }}</td>
+        <td>{{ incidencias.solucion }}</td>
+        <td>{{ incidencias.estado }}</td>
+        <td>{{ incidencias.revisada }}</td>
+      </tr>
+  </tbody>
+</table>
+</div>
+    <!--
+    <div>
+      <p>Id: {{ incidencias.id }}</p>
+    </div>
+    <div class="form-floating mb-3">
+      <p>Descripción de la incidencia: {{ incidencias.descIncidencia }}</p>
+    </div>
+    <div class="form-floating mb-3">
+      <p>Id: {{ incidencias.fecha }}</p>
+    </div>
+    <div class="form-floating mb-3">
+      <p>Id: {{ incidencias.lugarIncidencia }}</p>
+    </div>
+    <div class="form-floating mb-3">
+      <p>Id: {{ incidencias.solucion }}</p>
+    </div>
+    <div class="form-floating mb-3">
+      <p>Id: {{ incidencias.estado }}</p>
+    </div>
+    <div class="form-floating mb-3">
+      <p>Id: {{ incidencias.revisada }}</p>
+    </div>
+  -->
+

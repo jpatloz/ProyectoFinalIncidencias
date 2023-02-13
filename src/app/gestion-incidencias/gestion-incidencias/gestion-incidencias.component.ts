@@ -28,6 +28,8 @@ export class GestionIncidenciasComponent implements OnInit {
       })
   }
 
+
+
   ngOnInit() {
     this.getTodosLosClientes();
   }

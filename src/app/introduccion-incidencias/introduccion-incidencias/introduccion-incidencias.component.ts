@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { IncidenciasServicioService } from '../../Servicio/incidencias-servicio.service';
 import { ActivatedRoute } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
+
 
 @Component({
   selector: 'app-introduccion-incidencias',
@@ -10,7 +10,7 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./introduccion-incidencias.component.css']
 })
 export class IntroduccionIncidenciasComponent implements OnInit {
-  datosIncidencias: FormGroup = this.form.group({
+  datosIncidencias = this.form.group({
     id: ['', Validators.required],
     fecha: ['', Validators.required],
     lugarIncidencia: ['', Validators.required],
@@ -21,8 +21,8 @@ export class IntroduccionIncidenciasComponent implements OnInit {
     }
   )
 
-
-  nuevo: boolean = false;
+  conexion = 'Incidencias';
+  nuevo: boolean = true;
   documentId: any;
 
   constructor(
@@ -32,13 +32,14 @@ export class IntroduccionIncidenciasComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
     this.ruta.params.subscribe( params => {
       if(params['id']){
         this.documentId = String(params['id']);
         this.nuevo = false;
         console.log('editar');
-        // Mostramos el portero en el formulario
-        this.incidenciasServicio.getIncidencia(this.documentId).subscribe(
+        // Mostramos la incidencia en el formulario
+        this.incidenciasServicio.getIncidencia(this.documentId, this.conexion).subscribe(
           (resp: any) => {
             this.datosIncidencias.setValue(resp.payload.data());
           }
@@ -48,13 +49,14 @@ export class IntroduccionIncidenciasComponent implements OnInit {
         this.nuevo=true;
       }
     })
+    
   }
 
   guardar() {
     if(this.nuevo){
 
-      // guardamos datos con crearPortero
-      this.incidenciasServicio.crearIncidencia(this.datosIncidencias.value).then(
+      // guardamos datos con crearIncidencia
+      this.incidenciasServicio.crearIncidencia(this.datosIncidencias.value, this.conexion).then(
         () => {
           alert('Incidencia creada, enhorabuena');
         }, (error: any) => {
@@ -63,8 +65,8 @@ export class IntroduccionIncidenciasComponent implements OnInit {
       )
     }else{
 
-      // llamamos a actualizarPortero
-      this.incidenciasServicio.actualizarIncidencia(this.documentId, this.datosIncidencias.value).then(
+      // llamamos a actualizarIncidencia
+      this.incidenciasServicio.actualizarIncidencia(this.documentId, this.datosIncidencias.value, this.conexion).then(
         () => {
           alert('Incidencia actualizado');
         },

@@ -14,12 +14,12 @@ const routes: Routes = [
 
   {
     path: 'gestion-incidencias', loadChildren: () =>
-  import('./gestion-incidencias/gestion-incidencias-routing.module').then(m=>m.GestionIncidenciasRoutingModule)
+  import('./gestion-incidencias/gestion-incidencias.module').then(m=>m.GestionIncidenciasModule)
   },
 
   {
     path: 'introduccion-incidencias', loadChildren: () =>
-  import('./introduccion-incidencias/introduccion-incidencias-routing.module').then(m=>m.IntroduccionIncidenciasRoutingModule)
+  import('./introduccion-incidencias/introduccion-incidencias.module').then(m=>m.IntroduccionIncidenciasModule)
   },
 
   {

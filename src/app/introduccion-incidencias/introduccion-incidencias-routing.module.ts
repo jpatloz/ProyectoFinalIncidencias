@@ -4,12 +4,9 @@ import { IntroduccionIncidenciasComponent } from './introduccion-incidencias/int
 
 const routes: Routes = [
   {
-    path:'introduccion-incidencias', component: IntroduccionIncidenciasComponent
+    path:'', component: IntroduccionIncidenciasComponent
   },
 
-  {
-    path: '**', redirectTo: 'introduccion-incidencias', pathMatch: 'full'
-  }
 ];
 
 @NgModule({
