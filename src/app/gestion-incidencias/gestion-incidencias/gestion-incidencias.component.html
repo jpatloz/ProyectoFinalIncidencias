@@ -1,14 +1,17 @@
-<!-- Esta clase nos mostrará los detalles de cada portero, poniendo una lista hecha con clases
+<!-- Esta clase nos mostrará los detalles de cada incidencia, poniendo una lista hecha con clases
   de bootstrap-->
-<div  *ngFor="let incidencias of listadoIncidencias">
-  <div>
-    <h4>Incidencia:</h4>
-    <ul class="list-group">
-      <li class="list-group-item">Id: {{ incidencias.id }}</li>
-      <li class="list-group-item">Descripción: {{ incidencias.descIncidencia }}</li>
-      <li class="list-group-item"><button type="button" class="btn btn-info" routerLink="/gestion-incidencias/datos-incidencias/{{incidencias.id}}">Detalles</button></li>
-    </ul>
+<div>
+  <div  *ngFor="let incidencias of listadoIncidencias">
+    <div>
+      <h4>Incidencia:</h4>
+      <ul class="list-group">
+        <li class="list-group-item">Id: {{ incidencias.id }}</li>
+        <li class="list-group-item">Descripción: {{ incidencias.descIncidencia }}</li>
+        <li class="list-group-item"><button type="button" class="btn btn-info" routerLink="detalles/{{incidencias.documentId}}">Detalles</button></li>
+      </ul>
+    </div>
   </div>
+  <button class="btn btn-primary boton" (click)="cancelar()"routerLink="menu">Cancelar</button>
 </div>
 
 

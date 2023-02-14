@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IncidenciasServicioService } from '../../Servicio/incidencias-servicio.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-gestion-incidencias',
@@ -7,8 +8,9 @@ import { IncidenciasServicioService } from '../../Servicio/incidencias-servicio.
   styleUrls: ['./gestion-incidencias.component.css']
 })
 export class GestionIncidenciasComponent implements OnInit {
-  constructor(private incidenciasServicio: IncidenciasServicioService) { }
-  
+  constructor(private incidenciasServicio: IncidenciasServicioService,
+    private location: Location) { }
+
   conexion = 'Incidencias';
   listadoIncidencias: any[] = [];
 
@@ -29,6 +31,10 @@ export class GestionIncidenciasComponent implements OnInit {
 
   ngOnInit() {
     this.getAll();
+  }
+
+  cancelar() {
+    this.location.back();
   }
 
 }

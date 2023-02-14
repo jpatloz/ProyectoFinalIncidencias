@@ -1,5 +1,4 @@
 export interface Incidencias {
-  documentId: string,
   data: {
   id: number,
   fecha: string,

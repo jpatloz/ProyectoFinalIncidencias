@@ -2,26 +2,26 @@
     <h1>Editar incidencia</h1>
     <form [formGroup]="datosIncidencias"  class="form-group container w-50 mt-3">
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="id" placeholder="id" formControlName="id"  readonly/>
+            <input type="text" class="form-control" id="id" placeholder="id" formControlName="id" id="publico" readonly/>
         </div>
         <div class="form-floating mb-3">
             <input type="text" class="form-control" id="fecha" placeholder="fecha" formControlName="fecha" readonly/>
-        <label for="fecha">fecha</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="lugarIncidencia" placeholder="lugarIncidencia" formControlName="lugarIncidencia" readonly/> 
-        </div>      
+            <input type="text" class="form-control" id="lugarIncidencia" placeholder="lugarIncidencia" formControlName="lugarIncidencia" readonly/>
+        </div>
         <div class="form-floating mb-3">
             <input type="text" class="form-control" id="descIncidencia" placeholder="descIncidencia" formControlName="descIncidencia" readonly/>
         </div>
         <div class="form-floating mb-3">
             <input type="text" class="form-control" id="solucion" placeholder="solucion" formControlName="solucion" readonly/>
+            <label for="fecha"></label>
         </div>
 
         <div><h3>Modificar la incidencia: </h3></div>
         <div class="mb-3 d-flex justify-content-center">
           <select class="form-control" placeholder="estado" formControlName="estado">
-              <option>Leída</option>             
+              <option>Leída</option>
               <option>Asignada</option>
               <option>Comenzada</option>
               <option>Terminada</option>
@@ -32,7 +32,6 @@
           <input class="form-control" placeholder="revisada" type="text" formControlName="revisada" readonly>
         </div>
         <button class="btn btn-primary" (click)="borrar()" routerLink="menu">Borrar</button>
-        <button class="btn btn-primary" (click)="actualizar()"routerLink="menu">ELiminar</button>
+        <button class="btn btn-primary" (click)="actualizar()" routerLink="menu">Actualizar</button>
     </form>
 </div>
-  

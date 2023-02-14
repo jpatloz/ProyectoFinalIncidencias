@@ -12,6 +12,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     GestionIncidenciasComponent,
     DatosIncidenciasComponent
   ],
+
   imports: [
     CommonModule,
     GestionIncidenciasRoutingModule,
@@ -19,4 +20,5 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     FormsModule
   ]
 })
+
 export class GestionIncidenciasModule { }

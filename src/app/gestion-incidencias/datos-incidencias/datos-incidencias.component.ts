@@ -17,39 +17,39 @@ export class DatosIncidenciasComponent implements OnInit {
     descIncidencia: ['', Validators.required],
     solucion: ['', Validators.required],
     estado: ['', Validators.required],
-    revision: ['', Validators.required],
+    revisada: ['', Validators.required],
     }
   )
-  
+
   conexion = 'Incidencias';
   listadoIncidencias: any;
-  documentId: any;
+  id: any;
 
   constructor(private incidenciasServicio: IncidenciasServicioService,
     private ruta: ActivatedRoute,
     private form: FormBuilder) { }
 
   ngOnInit(): void {
-    this.documentId = this.ruta.snapshot.paramMap.get("documentId");
-    this.incidenciasServicio.getIncidencia('Incidencias',this.documentId).subscribe((resp) => {
-      this.listadoIncidencias = resp.payload.data();
-      this.datosIncidencias.setValue(this.listadoIncidencias);
+    this.id = this.ruta.snapshot.paramMap.get('id');
+    this.incidenciasServicio.getIncidencia('Incidencias',this.id).subscribe((resp: any) => {
+    this.listadoIncidencias = resp.payload.data();
+    this.datosIncidencias.setValue(this.listadoIncidencias);
     });
   }
 
   editar() {
-    this.documentId = this.ruta.snapshot.paramMap.get('id')!;
+    this.id = this.ruta.snapshot.paramMap.get('id')!;
     this.incidenciasServicio.getAll(this.conexion).subscribe((resp: any) => {
       this.datosIncidencias.setValue(resp.payload.data());
     });
   }
-  
+
   actualizar(){
     this.listadoIncidencias = this.datosIncidencias.value;
 
     if (this.datosIncidencias.valid) {
 
-      this.incidenciasServicio.actualizarIncidencia("Incidencias",this.documentId, this.listadoIncidencias).then(
+      this.incidenciasServicio.actualizarIncidencia("Incidencias",this.id, this.listadoIncidencias).then(
         () => {
           alert("Registro actualizado");
         },
@@ -66,7 +66,7 @@ export class DatosIncidenciasComponent implements OnInit {
   }
 
   borrar() {
-    this.documentId = this.ruta.snapshot.paramMap.get('id')!;
-    this.incidenciasServicio.borrarIncidencia(this.conexion, this.documentId);
+    this.id = this.ruta.snapshot.paramMap.get('id')!;
+    this.incidenciasServicio.borrarIncidencia(this.conexion, this.id);
   }
 }

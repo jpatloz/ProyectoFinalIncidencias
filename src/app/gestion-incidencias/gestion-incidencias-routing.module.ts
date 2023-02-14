@@ -5,14 +5,14 @@ import { DatosIncidenciasComponent } from './datos-incidencias/datos-incidencias
 
 const routes: Routes = [
   {
-    path:'gestion-incidencias', component: GestionIncidenciasComponent
+    path:'', component: GestionIncidenciasComponent
   },
 
+  { path: 'detalles/:id', component: DatosIncidenciasComponent},
+  
   {
-    path: '**', redirectTo: 'gestion-incidencias', pathMatch: 'full'
+    path: '**', redirectTo: '', pathMatch: 'full'
   },
-
-  { path: 'gestion-incidencias/:documentId', component: DatosIncidenciasComponent}
 ];
 
 @NgModule({
