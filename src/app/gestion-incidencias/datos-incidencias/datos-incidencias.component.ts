@@ -6,10 +6,9 @@ import { IncidenciasServicioService } from 'src/app/Servicio/incidencias-servici
 @Component({
   selector: 'app-datos-incidencias',
   templateUrl: './datos-incidencias.component.html',
-  styleUrls: ['./datos-incidencias.component.css']
+  styleUrls: ['./datos-incidencias.component.css'],
 })
 export class DatosIncidenciasComponent implements OnInit {
-
   datosIncidencias = this.form.group({
     id: ['', Validators.required],
     fecha: ['', Validators.required],
@@ -17,56 +16,64 @@ export class DatosIncidenciasComponent implements OnInit {
     descIncidencia: ['', Validators.required],
     solucion: ['', Validators.required],
     estado: ['', Validators.required],
-    revisada: ['', Validators.required],
-    }
-  )
+    revision: ['', Validators.required],
+  });
 
   conexion = 'Incidencias';
   listadoIncidencias: any;
-  id: any;
+  documentId: any;
 
-  constructor(private incidenciasServicio: IncidenciasServicioService,
+  constructor(
+    private incidenciasServicio: IncidenciasServicioService,
     private ruta: ActivatedRoute,
-    private form: FormBuilder) { }
+    private form: FormBuilder
+  ) {}
 
   ngOnInit(): void {
-    this.id = this.ruta.snapshot.paramMap.get('id');
-    this.incidenciasServicio.getIncidencia('Incidencias',this.id).subscribe((resp: any) => {
-    this.listadoIncidencias = resp.payload.data();
-    this.datosIncidencias.setValue(this.listadoIncidencias);
-    });
+    this.documentId = this.ruta.snapshot.paramMap.get('documentId');
+    this.incidenciasServicio
+      .getIncidencia(this.conexion, this.documentId)
+      .subscribe((resp: any) => {
+        this.listadoIncidencias = resp.payload.data();
+        this.datosIncidencias.setValue(this.listadoIncidencias);
+      });
   }
 
   editar() {
-    this.id = this.ruta.snapshot.paramMap.get('id')!;
+    this.documentId = this.ruta.snapshot.paramMap.get('documentId')!;
     this.incidenciasServicio.getAll(this.conexion).subscribe((resp: any) => {
       this.datosIncidencias.setValue(resp.payload.data());
     });
   }
 
-  actualizar(){
+  actualizar() {
     this.listadoIncidencias = this.datosIncidencias.value;
 
     if (this.datosIncidencias.valid) {
-
-      this.incidenciasServicio.actualizarIncidencia("Incidencias",this.id, this.listadoIncidencias).then(
-        () => {
-          alert("Registro actualizado");
-        },
-        (error) => {
-          alert("Ha ocurrido un error");
-          console.log(error);
-        }
-      );
-
-    }else{
+      this.incidenciasServicio
+        .actualizarIncidencia(
+          this.conexion,
+          this.documentId,
+          this.listadoIncidencias
+        )
+        .then(
+          () => {
+            alert('Registro actualizado');
+          },
+          (error) => {
+            alert('Ha ocurrido un error');
+            console.log(error);
+          }
+        );
+    } else {
       this.datosIncidencias.reset();
-      alert("Complete los campos");
+      alert('Complete los campos');
     }
   }
 
   borrar() {
-    this.id = this.ruta.snapshot.paramMap.get('id')!;
-    this.incidenciasServicio.borrarIncidencia(this.conexion, this.id);
+    this.documentId = this.ruta.snapshot.paramMap.get('documentId')!;
+    this.incidenciasServicio.borrarIncidencia(this.conexion, this.documentId);
+    this.datosIncidencias.reset;
   }
 }

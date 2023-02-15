@@ -16,19 +16,19 @@ export class IncidenciasServicioService {
     return this.firebase.collection(conexion).snapshotChanges(); //Método para leer todas las incidencias
   }
 
-  getIncidencia(id: string, conexion: string){
-    return this.firebase.collection(conexion).doc(id).snapshotChanges(); //Método para leer una incidencia
+  getIncidencia(conexion: string, documentId: string){
+    return this.firebase.collection(conexion).doc(documentId).snapshotChanges(); //Método para leer una incidencia
   }
 
   crearIncidencia(data: any, conexion: string){
     return this.firebase.collection(conexion).add(data); //Método para añadir una nueva incidencia
   }
 
-  actualizarIncidencia(id: string, data: any, conexion: string) {
-    return this.firebase.collection(conexion).doc(id).update(data); //Método para actualizar la información de una incidencia
+  actualizarIncidencia(conexion: string, documentId: string, data: any) {
+    return this.firebase.collection(conexion).doc(documentId).update(data); //Método para actualizar la información de una incidencia
   }
 
-  borrarIncidencia(id: string, conexion: string){
-    return this.firebase.collection(conexion).doc(id).delete(); //Método para dar borrar una incidencia
+  borrarIncidencia(conexion: string, documentId: string){
+    return this.firebase.collection(conexion).doc(documentId).delete(); //Método para dar borrar una incidencia
   }
 }

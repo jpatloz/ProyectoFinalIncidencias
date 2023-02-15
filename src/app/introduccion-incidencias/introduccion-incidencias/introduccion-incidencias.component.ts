@@ -49,7 +49,7 @@ export class IntroduccionIncidenciasComponent implements OnInit {
         this.nuevo=true;
       }
     })
-    
+
   }
 
   guardar() {
@@ -59,19 +59,9 @@ export class IntroduccionIncidenciasComponent implements OnInit {
       this.incidenciasServicio.crearIncidencia(this.datosIncidencias.value, this.conexion).then(
         () => {
           alert('Incidencia creada, enhorabuena');
+          this.datosIncidencias.reset;
         }, (error: any) => {
           alert("Error: " + error);
-        }
-      )
-    }else{
-
-      // llamamos a actualizarIncidencia
-      this.incidenciasServicio.actualizarIncidencia(this.documentId, this.datosIncidencias.value, this.conexion).then(
-        () => {
-          alert('Incidencia actualizado');
-        },
-        (error: any) => {
-          alert('Error: ' + error);
         }
       )
     }

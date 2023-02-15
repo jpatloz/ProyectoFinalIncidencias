@@ -8,8 +8,8 @@ const routes: Routes = [
     path:'', component: GestionIncidenciasComponent
   },
 
-  { path: 'detalles/:id', component: DatosIncidenciasComponent},
-  
+  { path: 'detalles/:documentId', component: DatosIncidenciasComponent},
+
   {
     path: '**', redirectTo: '', pathMatch: 'full'
   },
