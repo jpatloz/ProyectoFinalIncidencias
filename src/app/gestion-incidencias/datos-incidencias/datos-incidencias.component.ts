@@ -14,9 +14,9 @@ export class DatosIncidenciasComponent implements OnInit {
     fecha: ['', Validators.required],
     lugarIncidencia: ['', Validators.required],
     descIncidencia: ['', Validators.required],
-    solucion: ['', Validators.required],
-    estado: ['', Validators.required],
-    revision: ['', Validators.required],
+    solucion: [null, Validators.required],
+    estado: [null, Validators.required],
+    revision: [false, Validators.required],
   });
 
   conexion = 'Incidencias';
@@ -48,27 +48,18 @@ export class DatosIncidenciasComponent implements OnInit {
 
   actualizar() {
     this.listadoIncidencias = this.datosIncidencias.value;
-    if (this.datosIncidencias.valid) {
-      this.incidenciasServicio
-        .actualizarIncidencia(
-          this.conexion,
-          this.documentId,
-          this.listadoIncidencias
-        )
-        .then(
-          () => {
-            alert('Registro actualizado');
-          },
-          (error) => {
-            alert('Ha ocurrido un error');
-            console.log(error);
-          }
-        );
-    } else {
-      this.datosIncidencias.reset();
-      alert('Complete los campos');
-    }
+      
+      this.incidenciasServicio.actualizarIncidencia(this.conexion,this.documentId, this.listadoIncidencias).then(
+        () => {
+          alert("Incidencia actualizada con exito");
+        },
+        (error) => {
+          alert("Error");
+          console.log(error);
+        }
+      );
   }
+
 
   borrar() {
     this.documentId = this.ruta.snapshot.paramMap.get('documentId')!;

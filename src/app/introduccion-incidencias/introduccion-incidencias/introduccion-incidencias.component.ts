@@ -15,9 +15,9 @@ export class IntroduccionIncidenciasComponent implements OnInit {
     fecha: ['', Validators.required],
     lugarIncidencia: ['', Validators.required],
     descIncidencia: ['', Validators.required],
-    solucion: ['', Validators.required],
-    estado: ['', Validators.required],
-    revision: ['', Validators.required],
+    solucion: [null, Validators.required],
+    estado: [null, Validators.required],
+    revision: [false, Validators.required],
     }
   )
 

@@ -31,4 +31,8 @@ export class IncidenciasServicioService {
   borrarIncidencia(conexion: string, documentId: string){
     return this.firebase.collection(conexion).doc(documentId).delete(); //Método para dar borrar una incidencia
   }
+
+  estadoIncidencia(conexion: string, estado: boolean){
+    return this.firebase.collection(conexion, a => a.where('revision', '==', estado)).snapshotChanges();
+  }
 }

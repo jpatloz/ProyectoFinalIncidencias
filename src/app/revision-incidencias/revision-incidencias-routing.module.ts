@@ -8,7 +8,7 @@ const routes: Routes = [
   },
 
   {
-    path: '**', redirectTo: 'revision-incidencias', pathMatch: 'full'
+    path: '**', redirectTo: '', pathMatch: 'full'
   }
 ];
 
