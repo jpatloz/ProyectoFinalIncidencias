@@ -54,11 +54,9 @@ export class IntroduccionIncidenciasComponent implements OnInit {
 
   guardar() {
     if(this.nuevo){
-
-      // guardamos datos con crearIncidencia
       this.incidenciasServicio.crearIncidencia(this.datosIncidencias.value, this.conexion).then(
         () => {
-          alert('Incidencia creada, enhorabuena');
+          alert('Incidencia creada correctamente');
           this.datosIncidencias.reset;
         }, (error: any) => {
           alert("Error: " + error);

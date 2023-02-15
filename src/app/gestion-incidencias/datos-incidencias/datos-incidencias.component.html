@@ -1,32 +1,35 @@
-<div class="text-center mt-5">
-    <h1>Editar incidencia</h1>
-    <form [formGroup]="datosIncidencias"  class="form-group container w-50 mt-3">
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="id" placeholder="id" formControlName="id" id="publico" readonly/>
+<div class="text-center mt-5 fondo">
+  <div class="text-left">
+  <h1>Datos de la incidencia </h1>
+  </div>
+    <form [formGroup]="datosIncidencias"  class="form-inline">
+        <div class="form-inline mb-4">
+            <input class="form-control" id="id" formControlName="id" id="publico" readonly/>
         </div>
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="fecha" placeholder="fecha" formControlName="fecha" readonly/>
+        <div class="form-inline mb-4">
+            <input class="form-control" id="fecha" formControlName="fecha" readonly/>
         </div>
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="lugarIncidencia" placeholder="lugarIncidencia" formControlName="lugarIncidencia" readonly/>
+        <div class="form-inline mb-4">
+            <input class="form-control" id="lugarIncidencia" formControlName="lugarIncidencia" readonly/>
         </div>
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="descIncidencia" placeholder="descIncidencia" formControlName="descIncidencia" readonly/>
+        <div class="form-inline mb-4">
+            <input type="text" class="form-control" id="descIncidencia" formControlName="descIncidencia" readonly/>
         </div>
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="solucion" placeholder="solucion" formControlName="solucion" readonly/>
+        <div class="form-inline mb-4">
+            <input class="form-control" id="solucion" formControlName="solucion" readonly/>
             <label for="fecha"></label>
         </div>
 
-        <div><h3>Modificar la incidencia: </h3></div>
+        <div>
+          <h4>Modificar la incidencia: </h4>
+        </div>
         <div class="mb-3 d-flex justify-content-center">
-          <select class="form-control" placeholder="estado" formControlName="estado">
-              <option>Leída</option>
+          <select class="form-control-lg" formControlName="estado">
+              <option class="">Leída</option>
               <option>Asignada</option>
               <option>Comenzada</option>
               <option>Terminada</option>
           </select>
-          <!--<input class="form-control" formControlName="estado">-->
       </div>
         <button class="btn btn-primary" (click)="borrar()" routerLink="menu">Borrar</button>
         <button class="btn btn-primary" (click)="actualizar()"routerLink="menu">Actualizar</button>

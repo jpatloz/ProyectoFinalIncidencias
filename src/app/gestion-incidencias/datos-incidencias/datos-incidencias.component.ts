@@ -48,7 +48,6 @@ export class DatosIncidenciasComponent implements OnInit {
 
   actualizar() {
     this.listadoIncidencias = this.datosIncidencias.value;
-
     if (this.datosIncidencias.valid) {
       this.incidenciasServicio
         .actualizarIncidencia(

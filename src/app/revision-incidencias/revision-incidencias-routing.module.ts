@@ -4,7 +4,7 @@ import { RevisionIncidenciasComponent } from './revision-incidencias/revision-in
 
 const routes: Routes = [
   {
-    path:'revision-incidencias', component: RevisionIncidenciasComponent
+    path:'', component: RevisionIncidenciasComponent
   },
 
   {

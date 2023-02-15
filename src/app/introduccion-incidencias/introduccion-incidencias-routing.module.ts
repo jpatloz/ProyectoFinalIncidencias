@@ -7,6 +7,9 @@ const routes: Routes = [
     path:'', component: IntroduccionIncidenciasComponent
   },
 
+  {
+    path: '**', redirectTo: '', pathMatch: 'full'
+  }
 ];
 
 @NgModule({
