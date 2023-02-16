@@ -6,6 +6,6 @@ export interface Incidencias {
   descIncidencia: string,
   solucion: string,
   estado: string,
-  revisada: boolean
+  revision: boolean
   }
 }

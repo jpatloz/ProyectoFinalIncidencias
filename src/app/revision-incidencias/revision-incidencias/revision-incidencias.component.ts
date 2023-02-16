@@ -13,11 +13,15 @@ export class RevisionIncidenciasComponent implements OnInit {
   revisado: any[] = [];
   noRevisado: any[] = [];
   conexion: string = 'Incidencias';
-  condicion?: string = '';
+  fontStyle: string = '';
 
   constructor(private incidenciasServicio: IncidenciasServicioService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getIncidencias;
+    this.getIncidenciasRevisadas;
+    this.getIncidenciasNoRevisadas;
+  }
 
   getIncidencias() {
     this.incidenciasServicio
@@ -57,4 +61,7 @@ export class RevisionIncidenciasComponent implements OnInit {
         });
       });
   }
+
+
+
 }

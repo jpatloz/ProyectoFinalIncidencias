@@ -4,6 +4,7 @@ import { RevisionIncidenciasComponent } from './revision-incidencias/revision-in
 import { RevisionIncidenciasRoutingModule } from './revision-incidencias-routing.module';
 import { DatosRevisionComponent } from './datos-revision/datos-revision.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MaterialModule } from '../material/material.module';
 
 
 
@@ -16,7 +17,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     CommonModule,
     RevisionIncidenciasRoutingModule,    
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MaterialModule
   ]
 })
 export class RevisionIncidenciasModule { }

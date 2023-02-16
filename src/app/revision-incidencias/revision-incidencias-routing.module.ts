@@ -8,7 +8,7 @@ const routes: Routes = [
     path:'', component: RevisionIncidenciasComponent
   },
 
-  { path: 'detalles/:documentId', component: DatosRevisionComponent},
+  { path: 'revision-incidencias/:documentId', component: DatosRevisionComponent},
 
   {
     path: '**', redirectTo: '', pathMatch: 'full'
