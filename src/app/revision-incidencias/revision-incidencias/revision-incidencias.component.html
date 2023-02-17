@@ -1,103 +1,21 @@
-<!--
-<section class="header-section">
-      <button value=" " routerLink=" " >TODAS</button>
-      <button value="revisado" routerLink="revisado" >REVISADAS</button>
-      <button value="no revisado" routerLink="noRevisado" >NO REVISADAS</button>
-</section>
-<h2 style="text-align: center">LISTA DE INCIDENCIAS</h2>
-<h3 style="text-align: center">(Pulse para editar su estado de revision)</h3>
-
-<div *ngIf="condicion == ' '" class="text-center">
-  <div *ngFor="let listadoIncidencia of listadoIncidencias">
-    <br />
-    <div class="contenedor text-center">
-      <a
-        routerLink="revision/{{listadoIncidencia.documentId}}"class="btn btn-secondary">
-      Id: {{ listadoIncidencia.id }} // Lugar: {{ listadoIncidencia.lugarIncidencia }} // Descripcion: {{ listadoIncidencia.descIncidencia }}
-      </a>
-    </div>
-  </div>
+<div class="text-center m-3">
+  <h1 class="display-1">Revisión de las incidencias</h1>
+    <div class="card" *ngFor="let incidencias of listadoIncidencias">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Id: {{ incidencias.id }}</li>
+        <li class="list-group-item">Fecha: {{ incidencias.fecha }}</li>
+        <li class="list-group-item"> Lugar de la incidencia: {{  incidencias.lugarIncidencia }}</li>
+        <li class="list-group-item">Descripción de la incidencia: {{  incidencias.descIncidencia  }}</li>
+        <li class="list-group-item">Estado de la incidencia: {{  incidencias.estado  }}</li>
+        <li class="list-group-item">Lugar de la incidencia: {{  incidencias.solucion }}</li>
+      </ul>
 </div>
 
-<div *ngIf="condicion == 'revisado'" class="text-center">
-  <div *ngFor="let revisado of listadoIncidencias">
-    <div class="contenedor text-center">
-      <a
-        routerLink="revision-incidencias/{{revisado.documentId}}"class="btn btn-secondary">
-      Id: {{ revisado.id }} // Lugar: {{ revisado.lugarIncidencia }} // Descripcion: {{ revisado.descIncidencia }}
-      </a>
-    </div>
-  </div>
+<div>
+  <button class="btn btn-info" (click)="getIncidenciasRevisadas()">Revisadas</button>
+  <button class="btn btn-info" (click)="getIncidenciasNoRevisadas()">No revisadas</button>
+  <button class="btn btn-info" (click)="getIncidencias()">Todas</button>
 </div>
-
-<div *ngIf="condicion == 'noRevisado'" class="text-center">
-  <div *ngFor="let noRevisado of listadoIncidencias; let i = index">
-    <br />
-    <div class="contenedor text-center">
-      <a
-        routerLink="revision/{{noRevisado.documentId}}"class="btn btn-secondary">
-      Id: {{ noRevisado.id }} // Lugar: {{ noRevisado.lugarIncidencia }} // Descripcion: {{ noRevisado.descIncidencia }}
-      </a>
-    </div>
-  </div>
-</div>
-
-<br />
-<div class="text-center">
-</div>
--->
-
-<h4>FILTRADO DE INCIDENCIAS POR</h4>
-<section class="header-section">
-  <mat-button-toggle-group [(ngModel)]="fontStyle" aria-label="Font Style">
-    <mat-button-toggle value=" ">TODAS</mat-button-toggle>
-    <mat-button-toggle value="revisado">REVISADAS</mat-button-toggle>
-    <mat-button-toggle value="no revisado">NO REVISADAS</mat-button-toggle>
-  </mat-button-toggle-group>
-</section>
-<h2 style="text-align: center">LISTA DE INCIDENCIAS</h2>
-<h3 style="text-align: center">(Pulse para editar su estado de revision)</h3>
-
-<br /><br />
-
-<div *ngIf="fontStyle == ' '" class="text-center">
-  <div *ngFor="let todas of listadoIncidencias; let i = index">
-    <br />
-    <div class="contenedor text-center">
-      <a
-        routerLink="/revision-incidencias/revision-incidencias/{{todas.documentId}}"class="btn btn-secondary">
-      Id: {{ todas.data.id }} // Lugar: {{ todas.data.lugarIncidencia }} // Descripcion: {{ todas.data.descIncidencia }}
-      </a>
-    </div>
-  </div>
-</div>
-
-<div *ngIf="fontStyle == 'revisado'" class="text-center">
-  <div *ngFor="let revisado of listadoIncidencias; let i = index">
-    <br />
-    <div class="contenedor text-center">
-      <a
-        routerLink="/revision-incidencias/revision-incidencias/{{revisado.documentId}}"class="btn btn-secondary">
-      Persona: {{ revisado.data.id }} // Lugar: {{ revisado.data.lugar }} // Descripcion: {{ revisado.data.descripcion }}
-      </a>
-    </div>
-  </div>
-</div>
-
-<div *ngIf="fontStyle == 'no revisado'" class="text-center">
-  <div *ngFor="let noRevisado of listadoIncidencias; let i = index">
-    <br />
-    <div class="contenedor text-center">
-      <a
-        routerLink="/revision-incidencias/revision-incidencias/{{noRevisado.documentId}}"class="btn btn-secondary">
-      Persona: {{ noRevisado.data.id }} // Lugar: {{ noRevisado.data.lugar }} // Descripcion: {{ noRevisado.data.descripcion }}
-      </a>
-    </div>
-  </div>
-</div>
-
-<br />
-<div class="text-center">
 </div>
 
 

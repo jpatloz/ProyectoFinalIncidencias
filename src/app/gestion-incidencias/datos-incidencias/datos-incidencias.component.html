@@ -1,4 +1,4 @@
-<div class="text-center mt-5 fondo">
+<div class="text-center mt-5">
   <div class="text-left">
   <h1>Datos de la incidencia </h1>
   </div>
@@ -26,13 +26,12 @@
         </div>
         <div class="mb-3 d-flex justify-content-center">
           <select class="form-control-lg" formControlName="estado">
-              <option class="">Leída</option>
-              <option>Asignada</option>
-              <option>Comenzada</option>
-              <option>Terminada</option>
+              <option>revisada</option>
+              <option>noRevisada</option>
           </select>
       </div>
         <button class="btn btn-primary" (click)="borrar()" routerLink="menu">Borrar</button>
         <button class="btn btn-primary" (click)="actualizar()"routerLink="menu">Actualizar</button>
+        <button class="btn btn-primary" (click)="cancelar()"routerLink="">Cancelar</button>
     </form>
 </div>

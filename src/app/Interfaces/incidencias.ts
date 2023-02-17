@@ -5,7 +5,6 @@ export interface Incidencias {
   lugarIncidencia: string,
   descIncidencia: string,
   solucion: string,
-  estado: string,
-  revision: boolean
-  }
+  estado: string
+}
 }

@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { IncidenciasServicioService } from '../../Servicio/incidencias-servicio.service';
-import { FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-revision-incidencias',
@@ -10,27 +8,23 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class RevisionIncidenciasComponent implements OnInit {
   listadoIncidencias: any[] = [];
-  revisado: any[] = [];
-  noRevisado: any[] = [];
   conexion: string = 'Incidencias';
-  fontStyle: string = '';
 
   constructor(private incidenciasServicio: IncidenciasServicioService) {}
 
   ngOnInit(): void {
     this.getIncidencias;
-    this.getIncidenciasRevisadas;
-    this.getIncidenciasNoRevisadas;
   }
 
   getIncidencias() {
     this.incidenciasServicio
       .getAll(this.conexion)
-      .subscribe((incidencias: any) => {
-        incidencias.forEach((data: any) => {
+      .subscribe((resp: any) => {
+        this.listadoIncidencias = [];
+        resp.forEach((data: any) => {
           this.listadoIncidencias.push({
-            documentId: data.payload.doc.documentId,
-            data: data.payload.doc.data(),
+            ...data.payload.doc.data(),
+            documentId: data.payload.doc.id,
           });
         });
       });
@@ -38,30 +32,34 @@ export class RevisionIncidenciasComponent implements OnInit {
 
   getIncidenciasRevisadas() {
     this.incidenciasServicio
-      .estadoIncidencia(this.conexion, true)
-      .subscribe((incidencias: any) => {
-        incidencias.foreach((data: any) => {
-          this.revisado.push({
-            documentId: data.payload.doc.documentId,
-            data: data.payload.doc.data(),
+      .estadoIncidencia(this.conexion, "revisada")
+      .subscribe((resp: any) => {
+        this.listadoIncidencias = [];
+        resp.forEach((data: any) => {
+          this.listadoIncidencias.push({
+            ...data.payload.doc.data(),
+            documentId: data.payload.doc.id,
           });
         });
       });
   }
+
 
   getIncidenciasNoRevisadas() {
     this.incidenciasServicio
-      .estadoIncidencia(this.conexion, false)
-      .subscribe((incidencias: any) => {
-        incidencias.forEach((data: any) => {
-          this.noRevisado.push({
-            documentId: data.payload.doc.documentId,
-            data: data.payload.doc.data(),
+      .estadoIncidencia(this.conexion, "noRevisada")
+      .subscribe((resp: any) => {
+        this.listadoIncidencias = [];
+        resp.forEach((data: any) => {
+          this.listadoIncidencias.push({
+            ...data.payload.doc.data(),
+            documentId: data.payload.doc.id,
           });
         });
       });
   }
 
+  
 
 
 }

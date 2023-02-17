@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { IncidenciasServicioService } from 'src/app/Servicio/incidencias-servicio.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-datos-incidencias',
@@ -15,8 +16,7 @@ export class DatosIncidenciasComponent implements OnInit {
     lugarIncidencia: ['', Validators.required],
     descIncidencia: ['', Validators.required],
     solucion: [null, Validators.required],
-    estado: [null, Validators.required],
-    revision: [false, Validators.required],
+    estado: [null, Validators.required]
   });
 
   conexion = 'Incidencias';
@@ -48,7 +48,7 @@ export class DatosIncidenciasComponent implements OnInit {
 
   actualizar() {
     this.listadoIncidencias = this.datosIncidencias.value;
-      
+
       this.incidenciasServicio.actualizarIncidencia(this.conexion,this.documentId, this.listadoIncidencias).then(
         () => {
           alert("Incidencia actualizada con exito");
@@ -65,5 +65,9 @@ export class DatosIncidenciasComponent implements OnInit {
     this.documentId = this.ruta.snapshot.paramMap.get('documentId')!;
     this.incidenciasServicio.borrarIncidencia(this.conexion, this.documentId);
     this.datosIncidencias.reset;
+  }
+
+  cancelar() {
+    this.datosIncidencias.reset();
   }
 }
