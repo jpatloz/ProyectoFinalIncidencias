@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@angular/fire/auth';
 //import { Auth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
@@ -8,9 +9,11 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 export class IncidenciasServicioService {
 
   constructor(
-    private firebase: AngularFirestore, //Creamos la propiedad firebase para hacer el método de conexión
-    //private auth: Auth
+    private firebase: AngularFirestore, //Creamos la propiedad firebase
+    private auth: Auth
   ) { }
+
+    //Métodos para los componentes de gestión, revisión e introducción
 
   getAll(conexion: string) {
     return this.firebase.collection(conexion).snapshotChanges(); //Método para leer todas las incidencias
@@ -33,6 +36,20 @@ export class IncidenciasServicioService {
   }
 
   estadoIncidencia(conexion: string, estado: string){
-    return this.firebase.collection(conexion, a => a.where('estado', '==', estado)).snapshotChanges();
+    return this.firebase.collection(conexion, a => a.where('estado', '==', estado)).snapshotChanges(); //Método para comprobar el estado de una incidencia
   }
+    //Métodos para login y registro
+
+    registro({correo, contraseña}: any){
+      return createUserWithEmailAndPassword(this.auth, correo, contraseña);
+    }
+
+    login({correo, contraseña}: any){
+      return signInWithEmailAndPassword(this.auth, correo, contraseña);
+    }
+
+  //Métodos para los roles
+
+  
+
 }

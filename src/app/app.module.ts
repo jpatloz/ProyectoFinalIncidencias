@@ -11,6 +11,8 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { MenuComponent } from './menu/menu.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 
 @NgModule({
   declarations: [
@@ -26,9 +28,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AngularFireModule.initializeApp(environment.firebase),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase))
   ],
-  providers: [],
+  providers: [
+    { provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

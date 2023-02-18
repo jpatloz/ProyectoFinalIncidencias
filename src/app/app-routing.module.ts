@@ -23,6 +23,16 @@ const routes: Routes = [
   },
 
   {
+    path: 'login', loadChildren: () =>
+  import('./autenticacion/login/login.module').then(m=>m.LoginModule)
+  },
+
+  {
+    path: 'registro', loadChildren: () =>
+  import('./autenticacion/registro/registro.module').then(m=>m.RegistroModule)
+  },
+
+  {
     path: '**', redirectTo: '/', pathMatch: 'full'
   }
 ];

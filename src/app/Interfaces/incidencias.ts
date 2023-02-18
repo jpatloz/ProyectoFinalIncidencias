@@ -6,5 +6,6 @@ export interface Incidencias {
   descIncidencia: string,
   solucion: string,
   estado: string
+  userId: string
 }
 }
