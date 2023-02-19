@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@angular/fire/auth';
+import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
 //import { Auth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
@@ -48,8 +48,23 @@ export class IncidenciasServicioService {
       return signInWithEmailAndPassword(this.auth, correo, contraseña);
     }
 
+    cerrarSesion(){
+      this.auth.signOut();
+    }
+    
   //Métodos para los roles
 
-  
+  cogerCorreo(){
+    const usuario = this.auth.currentUser;
+    return usuario?.email?.toString();
+  }
+
+  cogerRol(correo: string) {
+    return this.firebase.collection('Usuarios', ref => ref.where("correo", "==", correo)).snapshotChanges()
+  }
+
+  crearUsuarios(conexion: string, data: any){
+    return this.firebase.collection(conexion).add(data);
+  }
 
 }

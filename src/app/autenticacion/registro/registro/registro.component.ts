@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class RegistroComponent implements OnInit {
 
+  conexion: string = 'Usuarios';
   formRegistro: FormGroup;
 
   constructor(
@@ -17,16 +18,19 @@ export class RegistroComponent implements OnInit {
     private router: Router) {
     this.formRegistro = new FormGroup({
       correo: new FormControl(),
-      contraseña: new FormControl()
+      contraseña: new FormControl(),
+      rol: new FormControl('Normal')
     })
   }
 
   ngOnInit(): void {
+    
   }
 
   onSubmit() {
     this.incidenciasServicio.registro(this.formRegistro.value).then(response => {
       console.log(response);
+      this.incidenciasServicio.crearUsuarios(this.conexion, this.formRegistro.value);
       this.router.navigate(['login']);
     }).catch(error => console.log(error));
   }

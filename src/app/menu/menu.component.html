@@ -1,8 +1,18 @@
-<div>
-  <div class="text-center">
-    <h1>Proyecto de incidencias</h1>
+
+<div class="text-center">
+<h1>Proyecto de incidencias</h1>
+<i *ngFor="let usuarios of rolUsuarios">
+  <div class="text-center" *ngIf="usuarios.rol == 'Admin'">
     <a class="btn btn-outline-success" routerLink="/introduccion-incidencias">Introducir incidencias</a>
     <a class="btn btn-outline-success" routerLink="/gestion-incidencias">Gestión incidencias</a>
     <a class="btn btn-outline-success" routerLink="/revision-incidencias">Revisión incidencias</a>
   </div>
+  <div class="text-center" *ngIf="usuarios.rol == 'Empleado'">
+    <a class="btn btn-outline-success" routerLink="/introduccion-incidencias">Introducir incidencias</a>
+    <a class="btn btn-outline-success" routerLink="/gestion-incidencias">Gestión incidencias</a>
+  </div>
+  <div class="text-center" *ngIf="usuarios.rol == 'Normal'">
+    <a class="btn btn-outline-success" routerLink="/introduccion-incidencias">Introducir incidencias</a>
+  </div>
+</i>
 </div>

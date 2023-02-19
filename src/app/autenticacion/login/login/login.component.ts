@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { IncidenciasServicioService } from '../../../Servicio/incidencias-servicio.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,8 @@ export class LoginComponent implements OnInit {
   formLogin: FormGroup;
 
   constructor(
-    private incidenciasServicio: IncidenciasServicioService
+    private incidenciasServicio: IncidenciasServicioService,
+    private router: Router
   ) {
     this.formLogin = new FormGroup({
       correo: new FormControl(),
@@ -24,9 +26,14 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    this.incidenciasServicio.login(this.formLogin.value)
-    .then((response) => console.log(response), ()=> {alert("Has iniciado sesión correctamente")} )
-    .catch(error => console.log(error));
+    try{
+      this.incidenciasServicio.login(this.formLogin.value);
+      this.router.navigate(['menu']);
+      alert("Has iniciado sesión");
+    }catch(error){
+      console.log(error);
+    }
+  }
   }
 
-}
+

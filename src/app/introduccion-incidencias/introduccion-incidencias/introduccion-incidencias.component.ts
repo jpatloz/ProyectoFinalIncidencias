@@ -24,6 +24,8 @@ export class IntroduccionIncidenciasComponent implements OnInit {
   conexion = 'Incidencias';
   nuevo: boolean = true;
   documentId: any;
+  correo: any = this.incidenciasServicio.cogerCorreo();
+  rolUsuarios: any[] = [];
 
   constructor(
     private form: FormBuilder,
@@ -32,7 +34,6 @@ export class IntroduccionIncidenciasComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
     this.ruta.params.subscribe( params => {
       if(params['id']){
         this.documentId = String(params['id']);
@@ -49,7 +50,6 @@ export class IntroduccionIncidenciasComponent implements OnInit {
         this.nuevo=true;
       }
     })
-
   }
 
   guardar() {
@@ -64,7 +64,7 @@ export class IntroduccionIncidenciasComponent implements OnInit {
       )
     }
   }
-
+  
   cancelar() {
     this.datosIncidencias.reset();
   }
