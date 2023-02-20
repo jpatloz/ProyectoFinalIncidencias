@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { IncidenciasServicioService } from '../../../Servicio/incidencias-servicio.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UsuarioService } from '../../../Servicio/usuario.service';
 
 @Component({
   selector: 'app-login',
@@ -13,12 +13,13 @@ export class LoginComponent implements OnInit {
   formLogin: FormGroup;
 
   constructor(
-    private incidenciasServicio: IncidenciasServicioService,
-    private router: Router
+    private usuarioServicio: UsuarioService,
+    private router: Router,
+    private firebase: FormBuilder
   ) {
-    this.formLogin = new FormGroup({
-      correo: new FormControl(),
-      contraseña: new FormControl()
+    this.formLogin = this.firebase.group({
+      correo: ['', Validators.required],
+      contraseña: ['', Validators.required],
     })
   }
 
@@ -27,9 +28,13 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     try{
-      this.incidenciasServicio.login(this.formLogin.value);
-      this.router.navigate(['menu']);
-      alert("Has iniciado sesión");
+      this.usuarioServicio.login(this.formLogin.value).then(
+        () => {
+          this.router.navigate(['menu']);
+          alert("Has iniciado sesión");
+        }
+      );
+
     }catch(error){
       console.log(error);
     }

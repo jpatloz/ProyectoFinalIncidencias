@@ -44,7 +44,6 @@ export class RevisionIncidenciasComponent implements OnInit {
       });
   }
 
-
   getIncidenciasNoRevisadas() {
     this.incidenciasServicio
       .estadoIncidencia(this.conexion, "noRevisada")
@@ -58,8 +57,4 @@ export class RevisionIncidenciasComponent implements OnInit {
         });
       });
   }
-
-  
-
-
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IncidenciasServicioService } from '../Servicio/incidencias-servicio.service';
+import { RolesService } from '../Servicio/roles.service';
 
 @Component({
   selector: 'app-menu',
@@ -8,32 +8,29 @@ import { IncidenciasServicioService } from '../Servicio/incidencias-servicio.ser
 })
 export class MenuComponent implements OnInit {
 
-  correo: any = this.incidenciasServicio.cogerCorreo()?.toString();
+  correo: any;
   rolUsuarios: any[] = [];
 
   constructor(
-    private incidenciasServicio: IncidenciasServicioService
-  ) { }
+    private rolesServicio: RolesService
+  ) {
+    this.correo = this.rolesServicio.cogerCorreo();
+   }
 
-  ngOnInit(): void {
-
-    this.getRoles();
-  }
-
-  
   getRoles(){
-    this.incidenciasServicio.cogerRol(this.correo).subscribe(
+    this.rolesServicio.cogerRol(this.correo).subscribe(
       (resp: any) => {
         this.rolUsuarios = [];
         resp.forEach((incidenciasSnapshot: any) => {
           this.rolUsuarios.push(
-            
-              ...incidenciasSnapshot.payload.doc.data()            
-            
+            {...incidenciasSnapshot.payload.doc.data()}
           )
         });
       })
   }
 
+  ngOnInit(): void {
+    this.getRoles();
+  }
 
 }

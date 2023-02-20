@@ -24,7 +24,6 @@ export class IntroduccionIncidenciasComponent implements OnInit {
   conexion = 'Incidencias';
   nuevo: boolean = true;
   documentId: any;
-  correo: any = this.incidenciasServicio.cogerCorreo();
   rolUsuarios: any[] = [];
 
   constructor(
@@ -46,7 +45,6 @@ export class IntroduccionIncidenciasComponent implements OnInit {
           }
         )
       }else{
-        console.log('nuevo');
         this.nuevo=true;
       }
     })
@@ -64,7 +62,7 @@ export class IntroduccionIncidenciasComponent implements OnInit {
       )
     }
   }
-  
+
   cancelar() {
     this.datosIncidencias.reset();
   }

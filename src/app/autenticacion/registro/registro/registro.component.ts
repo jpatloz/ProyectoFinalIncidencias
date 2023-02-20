@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { IncidenciasServicioService } from '../../../Servicio/incidencias-servicio.service';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+
 import { Router } from '@angular/router';
+import { UsuarioService } from '../../../Servicio/usuario.service';
 
 @Component({
   selector: 'app-registro',
@@ -14,23 +15,25 @@ export class RegistroComponent implements OnInit {
   formRegistro: FormGroup;
 
   constructor(
-    private incidenciasServicio: IncidenciasServicioService,
-    private router: Router) {
-    this.formRegistro = new FormGroup({
-      correo: new FormControl(),
-      contraseña: new FormControl(),
+    private usuarioServicio: UsuarioService,
+    private router: Router,
+    private firebase: FormBuilder)
+    {
+    this.formRegistro = this.firebase.group({
+      correo: ['', Validators.required],
+      contraseña: ['', Validators.required],
       rol: new FormControl('Normal')
     })
   }
 
   ngOnInit(): void {
-    
+
   }
 
   onSubmit() {
-    this.incidenciasServicio.registro(this.formRegistro.value).then(response => {
+    this.usuarioServicio.registro(this.formRegistro.value).then(response => {
       console.log(response);
-      this.incidenciasServicio.crearUsuarios(this.conexion, this.formRegistro.value);
+      this.usuarioServicio.crearUsuarios(this.conexion, this.formRegistro.value);
       this.router.navigate(['login']);
     }).catch(error => console.log(error));
   }
