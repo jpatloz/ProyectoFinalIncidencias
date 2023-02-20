@@ -20,9 +20,9 @@ export class RegistroComponent implements OnInit {
     private firebase: FormBuilder)
     {
     this.formRegistro = this.firebase.group({
-      correo: ['', Validators.required],
+      email: ['', Validators.required],
       contraseña: ['', Validators.required],
-      rol: new FormControl('Normal')
+      rol: ['1', Validators.required]
     })
   }
 

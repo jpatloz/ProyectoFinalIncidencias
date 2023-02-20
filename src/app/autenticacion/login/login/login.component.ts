@@ -18,8 +18,8 @@ export class LoginComponent implements OnInit {
     private firebase: FormBuilder
   ) {
     this.formLogin = this.firebase.group({
-      correo: ['', Validators.required],
-      contraseña: ['', Validators.required],
+      email: ['', Validators.required],
+      contraseña: ['', Validators.required]
     })
   }
 

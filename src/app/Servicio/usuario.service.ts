@@ -14,12 +14,12 @@ export class UsuarioService {
 
    //Métodos para login y registro
 
-   registro({ correo, contraseña }: any) {
-    return this.auth.createUserWithEmailAndPassword(correo, contraseña);
+   registro({ email, contraseña }: any) {
+    return this.auth.createUserWithEmailAndPassword(email, contraseña);
   }
 
-  login({ correo, contraseña }: any) {
-    return this.auth.signInWithEmailAndPassword(correo, contraseña);
+  login({ email, contraseña }: any) {
+    return this.auth.signInWithEmailAndPassword(email, contraseña);
   }
 
   cerrarSesion() {

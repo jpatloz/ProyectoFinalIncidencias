@@ -24,12 +24,12 @@ export class RolesService {
       .catch((error) => console.log(error.message));
     return true;
     */
-   const usuario = this.auth.currentUser;
-   return usuario?.email?.toString();
+    const usuario = this.auth.currentUser;
+    return usuario?.email;
   }
 
-  cogerRol(correo: string) {
-    return this.firebase.collection('Usuarios', (ref) => ref.where('correo', '==', correo)).snapshotChanges();
+  cogerRol(email: string) {
+    return this.firebase.collection("Usuarios", ref => ref.where('email', '==', email)).valueChanges();
   }
 }
 

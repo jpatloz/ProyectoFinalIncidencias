@@ -2,11 +2,11 @@
 <div class="text-center">
 <h1>Proyecto de incidencias</h1>
 <i *ngFor="let usuarios of rolUsuarios">
-  <div class="text-center" *ngIf="usuarios.rol == 'Admin'">
+  <div class="text-center" *ngIf="usuarios.rol == '0'">
     <a class="btn btn-outline-success" routerLink="/gestion-incidencias">Gestión incidencias</a>
     <a class="btn btn-outline-success" routerLink="/revision-incidencias">Revisión incidencias</a>
   </div>
-  <div class="text-center" *ngIf="usuarios.rol == 'Empleado'">
+  <div class="text-center" *ngIf="usuarios.rol == '1'">
     <a class="btn btn-outline-success" routerLink="/gestion-incidencias">Gestión incidencias</a>
   </div>
 
