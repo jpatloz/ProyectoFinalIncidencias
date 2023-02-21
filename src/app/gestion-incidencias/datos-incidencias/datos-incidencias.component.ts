@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { IncidenciasServicioService } from 'src/app/Servicio/incidencias-servicio.service';
-import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-datos-incidencias',

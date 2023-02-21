@@ -32,8 +32,8 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
     provideFirebaseApp(() => initializeApp(environment.firebase))
   ],
   providers: [
-    { 
-      provide: FIREBASE_OPTIONS, useValue: environment.firebase 
+    {
+      provide: FIREBASE_OPTIONS, useValue: environment.firebase
     }],
   bootstrap: [AppComponent]
 })

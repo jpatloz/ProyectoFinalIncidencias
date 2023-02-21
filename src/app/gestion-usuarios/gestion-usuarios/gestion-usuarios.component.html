@@ -1,0 +1,21 @@
+
+<div class="text-center" [formGroup]="formUsuarios">
+  <h1>Gestión de usuarios</h1>
+<form>
+  <div class="form-inline mb-4">
+    <input class="form-control" id="email" formControlName="email" readonly/>
+</div>
+<div class="form-inline mb-4">
+  <input class="form-control" id="contraseña" formControlName="contraseña" readonly/>
+</div>
+<div>
+  <h4>Modificar el rol</h4>
+</div>
+<div class="mb-3 d-flex justify-content-center">
+  <select class="form-control-lg" formControlName="rol">
+      Administrador: <option>0</option>
+      Empleado: <option>1</option>
+  </select>
+</div>
+</form>
+</div>

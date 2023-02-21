@@ -1,10 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MenuComponent } from './menu/menu.component';
+import { GestionUsuariosModule } from './gestion-usuarios/gestion-usuarios.module';
 
 const routes: Routes = [
   {
     path: '', component: MenuComponent //Esta ruta nos dirige a la página principal
+  },
+
+  {
+    path: 'gestion-usuarios', loadChildren: () =>
+  import('./gestion-usuarios/gestion-usuarios.module').then(m=>m.GestionUsuariosModule)
   },
 
   {

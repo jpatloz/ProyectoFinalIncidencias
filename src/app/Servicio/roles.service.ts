@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Auth } from '@angular/fire/auth';
-//import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Injectable({
@@ -10,22 +9,15 @@ export class RolesService {
 
   constructor(
     private firebase: AngularFirestore, //Creamos la propiedad firebase
-    private auth: Auth
+    private auth: AngularFireAuth
   ) { }
 
    //Métodos para los roles
 
    cogerCorreo() {
-    /*this.auth.currentUser
-      .then((resp) => {
-        console.log(resp);
-        return resp?.email;
-      })
-      .catch((error) => console.log(error.message));
-    return true;
-    */
-    const usuario = this.auth.currentUser;
-    return usuario?.email;
+    return this.auth.currentUser;
+
+    //return true;
   }
 
   cogerRol(email: string) {

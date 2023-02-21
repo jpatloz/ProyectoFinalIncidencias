@@ -14,7 +14,7 @@ export class UsuarioService {
 
    //Métodos para login y registro
 
-   registro({ email, contraseña }: any) {
+  registro({ email, contraseña }: any) {
     return this.auth.createUserWithEmailAndPassword(email, contraseña);
   }
 
@@ -28,5 +28,9 @@ export class UsuarioService {
 
   crearUsuarios(conexion: string, data: any) {
     return this.firebase.collection(conexion).add(data);
+  }
+
+  getAllUsuarios(conexion: string){
+    return this.firebase.collection(conexion).snapshotChanges();
   }
 }
