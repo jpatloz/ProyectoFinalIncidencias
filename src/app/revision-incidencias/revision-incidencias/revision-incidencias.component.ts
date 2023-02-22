@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IncidenciasServicioService } from '../../Servicio/incidencias-servicio.service';
+import { Validators, FormBuilder } from '@angular/forms';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-revision-incidencias',
@@ -7,10 +9,13 @@ import { IncidenciasServicioService } from '../../Servicio/incidencias-servicio.
   styleUrls: ['./revision-incidencias.component.css'],
 })
 export class RevisionIncidenciasComponent implements OnInit {
-  listadoIncidencias: any[] = [];
-  conexion: string = 'Incidencias';
 
-  constructor(private incidenciasServicio: IncidenciasServicioService) {}
+  conexion = 'Incidencias';
+  listadoIncidencias: any[] = [];
+  documentId: any;
+
+  constructor(private incidenciasServicio: IncidenciasServicioService,
+    private location: Location ) {}
 
   ngOnInit(): void {
     this.getIncidencias;
@@ -57,4 +62,9 @@ export class RevisionIncidenciasComponent implements OnInit {
         });
       });
   }
+
+  cancelar() {
+    this.location.back();
+  }
+
 }

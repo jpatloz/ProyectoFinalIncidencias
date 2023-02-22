@@ -4,10 +4,7 @@
       <ul class="list-group list-group-flush">
         <li class="list-group-item">Id: {{ incidencias.id }}</li>
         <li class="list-group-item">Fecha: {{ incidencias.fecha }}</li>
-        <li class="list-group-item"> Lugar de la incidencia: {{  incidencias.lugarIncidencia }}</li>
-        <li class="list-group-item">Descripción de la incidencia: {{  incidencias.descIncidencia  }}</li>
-        <li class="list-group-item">Estado de la incidencia: {{  incidencias.estado  }}</li>
-        <li class="list-group-item">Lugar de la incidencia: {{  incidencias.solucion }}</li>
+        <li class="list-group-item"><button type="button" class="btn btn-info" routerLink="detalles/{{incidencias.documentId}}">Detalles</button></li>
       </ul>
 </div>
 
@@ -15,6 +12,7 @@
   <button class="btn btn-info" (click)="getIncidenciasRevisadas()">Revisadas</button>
   <button class="btn btn-info" (click)="getIncidenciasNoRevisadas()">No revisadas</button>
   <button class="btn btn-info" (click)="getIncidencias()">Todas</button>
+  <button class="btn btn-info" (click)="cancelar()">Cancelar</button>
 </div>
 </div>
 

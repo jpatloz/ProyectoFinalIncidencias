@@ -1,21 +1,16 @@
-
-<div class="text-center" [formGroup]="formUsuarios">
-  <h1>Gestión de usuarios</h1>
-<form>
-  <div class="form-inline mb-4">
-    <input class="form-control" id="email" formControlName="email" readonly/>
-</div>
-<div class="form-inline mb-4">
-  <input class="form-control" id="contraseña" formControlName="contraseña" readonly/>
-</div>
+<!-- Esta clase nos mostrará los detalles de cada incidencia -->
 <div>
-  <h4>Modificar el rol</h4>
+  <h1>Listado de usuarios</h1>
+  <div *ngFor="let usuarios of listadoUsuarios">
+    <div>
+      <ul class="list-group">
+        <li class="list-group-item">Email: {{ usuarios.email }}</li>
+        <li class="list-group-item"><button type="button" class="btn btn-info" routerLink="detalles/{{usuarios.documentId}}">Detalles</button></li>
+      </ul>
+    </div>
+  </div>
+  <button class="btn btn-primary boton" (click)="cancelar()">Cancelar</button>
 </div>
-<div class="mb-3 d-flex justify-content-center">
-  <select class="form-control-lg" formControlName="rol">
-      Administrador: <option>0</option>
-      Empleado: <option>1</option>
-  </select>
-</div>
-</form>
-</div>
+
+
+

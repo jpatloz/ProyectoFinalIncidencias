@@ -1,18 +1,22 @@
-table{
-  margin-bottom: 5%;
-}
-
 h1{
+  font-weight: normal;
+  font-size: 40px;
+  font-family: Arial;
+  text-transform: uppercase;
   margin-bottom: 2%;
   margin-top: 2%;
   text-align: center;
+
 }
 
 ul{
   margin: 2%;
+  
 }
 
 .boton{
   margin: 2%;
 }
+
+
 

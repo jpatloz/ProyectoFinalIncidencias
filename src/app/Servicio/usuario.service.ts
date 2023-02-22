@@ -31,6 +31,19 @@ export class UsuarioService {
   }
 
   getAllUsuarios(conexion: string){
-    return this.firebase.collection(conexion).snapshotChanges();
+    return this.firebase.collection(conexion).snapshotChanges(); //Método para leer todos los usuarios
   }
+
+  getUsuario(conexion: string, documentId: string) {
+    return this.firebase.collection(conexion).doc(documentId).snapshotChanges(); //Método para leer un usuario
+  }
+
+  actualizarUsuario(conexion: string, documentId: string, data: any) {
+    return this.firebase.collection(conexion).doc(documentId).update(data); //Método para actualizar la información de una incidencia
+  }
+
+  borrarUsuario(conexion: string, documentId: string) {
+    return this.firebase.collection(conexion).doc(documentId).delete(); //Método para dar borrar una incidencia
+  }
+
 }

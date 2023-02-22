@@ -1,8 +1,8 @@
 <div class="text-center mt-5">
   <div>
-  <h1>Datos de la incidencia </h1>
+  <h1>Datos de la revisión</h1>
   </div>
-  <form [formGroup]="datosIncidencias">
+  <form [formGroup]="datosRevision">
     <table  class="table table-info">
       <thead>
         <tr>
@@ -35,15 +35,13 @@
           <h2>Modificar la incidencia: </h2>
         </div>
         <div class="justify-content-center">
-          <select class="form-control-lg" formControlName="estado">
+          <select class="form-control-lg" formControlName="revision">
             <option>revisada</option>
             <option>noRevisada</option>
           </select>
         </div>
         <div class="justify-content-center">
-          <button class="btn btn-primary" (click)="borrar()" routerLink="menu">Borrar</button>
           <button class="btn btn-primary" (click)="actualizar()"routerLink="menu">Actualizar</button>
-          <button class="btn btn-primary" (click)="cancelar()"routerLink="">Cancelar</button>
         </div>
       </form>
 </div>

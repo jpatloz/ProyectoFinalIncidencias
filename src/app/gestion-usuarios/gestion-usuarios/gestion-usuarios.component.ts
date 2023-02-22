@@ -11,19 +11,11 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 })
 export class GestionUsuariosComponent implements OnInit {
 
-  formUsuarios: FormGroup;
-
   conexion = 'Usuarios';
   listadoUsuarios: any[] = [];
 
   constructor(private usuariosServicio: UsuarioService,
-    private location: Location,
-    private firebase: FormBuilder) {
-      this.formUsuarios = this.firebase.group({
-        email: ['', Validators.required],
-        contraseña: ['', Validators.required],
-        rol: ['', Validators.required]
-      })
+    private location: Location) {
      }
 
     getAllUsuarios() {
